@@ -1,4 +1,7 @@
-A simple hello world program as reactive REST application using Spring WebFlux.
-The application can be accessed at: [https://hellospringboot.onrender.com](https://hellospringboot.onrender.com)
+A simple Hello World program implemented as a reactive REST application using Spring WebFlux.
 
-Note that it may take up to a minute for the application to start up when accessed for the first time or after a period of inactivity, as it is hosted on a free tier service.
+The application can be accessed at:
+https://hellospringboot.onrender.com
+
+> **Note**
+> It may take up to a minute for the application to start when accessed for the first time or after a period of inactivity, as it is hosted on a free-tier service.
