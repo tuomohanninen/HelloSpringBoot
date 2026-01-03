@@ -1,16 +1,26 @@
-FROM amazoncorretto:25
+FROM amazoncorretto:25 AS builder
 
-# Use /usr/src/app as working directory
 WORKDIR /usr/src/app
 
-# Expose the application's port
+# Copy Gradle wrapper and build files
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle* .
+COPY settings.gradle* .
+
+# Copy source code
+COPY src src
+
+# Make gradlew executable and build the application
+RUN chmod +x gradlew && ./gradlew bootJar --no-daemon
+
+FROM amazoncorretto:25
+
+WORKDIR /usr/src/app
+
 EXPOSE 8080
 
-# Copy the executable Spring Boot jar (built by Gradle) into the image
-# Use a wildcard so you don't need to update the exact versioned filename each build
-COPY build/libs/*.jar app.jar
-
-# Make sure the jar is executable and run it
-RUN chmod a+x /usr/src/app/app.jar
+# Copy the built jar from the builder stage
+COPY --from=builder /usr/src/app/build/libs/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "/usr/src/app/app.jar"]
