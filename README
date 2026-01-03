@@ -1,5 +1,5 @@
 A simple Hello World program implemented as a reactive REST application using Spring WebFlux.
-Return a greeting message in Finnish.
+Returns a greeting message in Finnish.
 
 The application can be accessed at:
 https://hellospringboot.onrender.com
