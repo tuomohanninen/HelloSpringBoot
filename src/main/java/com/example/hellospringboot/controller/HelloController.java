@@ -9,7 +9,7 @@ public class HelloController {
 
     @GetMapping("/")
     public Mono<String> hello() {
-        return Mono.just("Terveiset reaktiivisesta REST-palvelusta!");
+        return Mono.just("Terveiset reaktiivisesta REST-palvelusta taas jälleen!");
     }
 }
 
